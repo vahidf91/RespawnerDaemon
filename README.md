@@ -4,13 +4,15 @@ My intention for writing this script was to create an easy to use Linux Daemon w
 
 1-	It searches the directory structure for `app.pid`. If `app.pid` is not found and the app is not running it means the app is stopped gracefully so it starts everthing from the beginning.
 
-2-	If `app.pid` not found and the app is running, It means that a sabotage has happened and the pid file is deleted. So it logs the incident.
+2-	If `app.pid` not found and the app is running, It means that a sabotage has happened and the pid file is deleted. So it logs the incident and reproduces `app.pid`.
 
 3-	If `app.pid` found and the app was running it means everything works fine and it writes the elapsed time and the date to the `incidents.log`.
 
 4-	If `app.pid` found and the process was not running it means the process is stopped, so it writes this incidents down and starts the process again and reproduces `app.pid`.
 
 Remember you must force your application to write its pid down in the app.pid whenever it starts and removes `app.pid` whenever it gracefully stops.
+
 You must run RespawnerDaemon in the background so you can turn it into a service or run it with nohup or use `>/dev/null 2>&1 &` at the end of `RespawnerDaemon.sh` start process to make it work in the background. The start command would be like this:
+
 `nuhop RespawnerDaemon >/dev/null 2>&1 &`
 
