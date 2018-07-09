@@ -14,5 +14,5 @@ Remember you must force your application to write its pid down in the app.pid wh
 
 You must run RespawnerDaemon in the background so you can turn it into a service or run it with nohup or use `>/dev/null 2>&1 &` at the end of `RespawnerDaemon.sh` start process to make it work in the background. The start command would be like this:
 
-`nuhop RespawnerDaemon >/dev/null 2>&1 &`
+`nuhop RespawnerDaemon.sh >/dev/null 2>&1 &`
 
